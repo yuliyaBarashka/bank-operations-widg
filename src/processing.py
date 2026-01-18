@@ -1,18 +1,27 @@
-def filter_by_state(transactions, state='EXECUTED'):
+from datetime import datetime
+from typing import List, Dict
+
+
+def filter_by_state(
+    operations: List[Dict],
+    state: str = "EXECUTED"
+) -> List[Dict]:
     """
-    Описание: принимает список словарей и необязательное значение для ключа state (по умолчанию 'EXECUTED').
-    Возвращает новый список словарей с элементами, где словарь['state'] == state.
+    Фильтрует список операций по значению ключа 'state'.
     """
+    return [op for op in operations if op.get("state") == state]
 
-    return [t for t in transactions if t.get('state') == state]
 
-def sort_by_date(transactions, order='desc'):
+def sort_by_date(
+    operations: List[Dict],
+    reverse: bool = True
+) -> List[Dict]:
     """
-    Описание: принимает список словарей и необязательный параметр order
-    (по умолчанию 'desc' для убывания)
-    Сортирует по дате в поле 'date' и возвращает новый отсортированный список.
+    Сортирует список операций по дате.
+    По умолчанию — по убыванию (сначала новые).
     """
-
-    return sorted(transactions, key=key, reverse=reverse)
-
-
+    return sorted(
+        operations,
+        key=lambda op: datetime.fromisoformat(op["date"]),
+        reverse=reverse
+    )
