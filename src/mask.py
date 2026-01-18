@@ -4,4 +4,3 @@ def get_mask_card_number(card_number: str) -> str:
 
 def get_mask_account(account: str) -> str:
     return f"**{account[-4:]}"
-
