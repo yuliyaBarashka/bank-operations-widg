@@ -14,6 +14,7 @@ def test_filter_by_currency(transactions, currency, expected_count):
     result = list(filter_by_currency(transactions, currency))
     assert len(result) == expected_count
 
+
 def test_filter_by_currency_empty_list():
     assert list(filter_by_currency([], "USD")) == []
 
