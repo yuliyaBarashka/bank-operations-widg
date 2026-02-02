@@ -5,7 +5,7 @@ from src.widget import mask_account_card, get_date
 @pytest.mark.parametrize(
     "data, expected",
     [
-        ("Visa Classic 1234567812345678", "Visa Classic 1234 56 **** 5678"),
+        ("Visa Classic 1234567812345678", "Visa Classic 1234 56** **** 5678"),
         ("Счет 40817810099910004312", "Счет **4312"),
     ]
 )
