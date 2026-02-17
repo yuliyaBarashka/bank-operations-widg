@@ -1,5 +1,6 @@
 import json
-from typing import List, Dict
+from typing import Dict, List
+
 
 def load_json_file(file_path: str) -> List[Dict]:
     """
