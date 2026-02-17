@@ -8,15 +8,19 @@
 HOMEWORKE9_2/\
 ├── src/\
 │   ├── masks.py          # Маскировка карт и счетов\
+│   ├── bank_operations.py\
 │   ├── decorators.py\
+│   ├── external_api.py\
 │   ├── generators.py\
-│   ├── processing.py    # Обработка операций\ 
+│   ├── processing.py    # Обработка операций\
 │   └── widget.py        # Основная логика виджета\
 │\
 ├── tests/\
 │   ├── conftest.py       # Фикстуры pytest\
 │   ├── test_mask.py\
+│   ├── test_bank_operations.py\
 │   ├── test_decorators.py\
+│   ├── test_external_api.py\
 │   ├── test_generators.py\
 │   ├── test_processing.py\
 │   └── test_widget.py\
