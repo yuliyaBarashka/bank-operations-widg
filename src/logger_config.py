@@ -5,6 +5,7 @@ LOGS_DIR = Path("logs")
 LOGS_DIR.mkdir(exist_ok=True)
 LOG_FILE = LOGS_DIR / "app.log"
 
+
 def setup_logger(name: str) -> logging.Logger:
     """
     Создаёт логер с file_handler и форматтером.

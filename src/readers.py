@@ -4,6 +4,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def read_transactions_from_csv(file_path: str) -> List[Dict[str, Any]]:
     logger.info(f"Чтение CSV-файла: {file_path}")
     try:
