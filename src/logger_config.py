@@ -13,3 +13,13 @@ logging.basicConfig(
     filemode="w",
     encoding="utf-8",
 )
+
+
+def setup_logging() -> None:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
+        filename=LOG_FILE,
+        filemode="w",
+        encoding="utf-8",
+    )

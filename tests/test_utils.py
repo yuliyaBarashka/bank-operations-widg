@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from src.utils import load_transactions
 
+
 def test_load_transactions_valid(tmp_path: Path):
     # подготовить корректный файл
     data = [
@@ -14,12 +15,14 @@ def test_load_transactions_valid(tmp_path: Path):
     result = load_transactions(str(p))
     assert result == data
 
+
 def test_load_transactions_empty_file(tmp_path: Path):
     p = tmp_path / "empty.json"
     p.write_text("", encoding="utf-8")
 
     result = load_transactions(str(p))
     assert result == []
+
 
 def test_load_transactions_not_list(tmp_path: Path):
     data = {"not": "a list"}
@@ -29,12 +32,14 @@ def test_load_transactions_not_list(tmp_path: Path):
     result = load_transactions(str(p))
     assert result == []
 
+
 def test_load_transactions_invalid_json(tmp_path: Path):
     p = tmp_path / "invalid.json"
     p.write_text("{ this is not: valid json }", encoding="utf-8")
 
     result = load_transactions(str(p))
     assert result == []
+
 
 def test_load_transactions_missing_file(tmp_path: Path):
     p = tmp_path / "missing.json"

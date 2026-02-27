@@ -6,7 +6,10 @@
 import os
 from dotenv import load_dotenv
 import requests
-import src.logger_config
+from src.logger_config import setup_logging
+
+setup_logging()
+
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
