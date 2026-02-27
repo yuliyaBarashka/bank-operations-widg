@@ -1,43 +1,41 @@
 import json
+import logging
 from typing import List, Dict, Any
 from pathlib import Path
 
+logger = logging.getLogger(__name__)
+
+
 def load_transactions(json_path: str) -> List[Dict[str, Any]]:
-    """
-    Загружает транзакции из файла JSON.
+    logger.info(f"Попытка загрузки файла: {json_path}")
 
-    Пояснения:
-    - Ожидается, что файл содержит список словарей (массив транзакций).
-    - Если файл пустой, содержит не список, не найден или некорректен - возвращает []
-    - Путь может быть любым путём к файлу.
-
-    Возвращаемое:
-    - список словарей (каждый элемент - транзакция). Если формат другой - пустой список.
-    """
     path = Path(json_path)
 
-    # Файл не существует
     if not path.exists():
+        logger.error("Файл не найден")
         return []
 
     try:
-        # Открываем файл и загружаем JSON
         with path.open("r", encoding="utf-8") as f:
             content = f.read().strip()
 
-        # Пустой файл
         if not content:
+            logger.warning("Файл пустой")
             return []
 
         data = json.loads(content)
 
-        # Ожидаем список словарей
         if isinstance(data, list) and all(isinstance(item, dict) for item in data):
+            logger.info("Файл успешно загружен")
             return data
 
-        # Неподходящий формат
+        logger.warning("Неверный формат данных")
         return []
 
-    except (IOError, OSError, json.JSONDecodeError):
-        # Любая проблема при чтении/разборе
+    except (IOError, OSError):
+        logger.error("Ошибка чтения файла")
+        return []
+
+    except json.JSONDecodeError:
+        logger.error("Ошибка декодирования JSON")
         return []
