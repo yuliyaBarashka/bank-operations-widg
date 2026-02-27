@@ -1,25 +1,24 @@
 import logging
 from pathlib import Path
 
-LOG_DIR = Path("logs")
-LOG_DIR.mkdir(exist_ok=True)
+LOGS_DIR = Path("logs")
+LOGS_DIR.mkdir(exist_ok=True)
+LOG_FILE = LOGS_DIR / "app.log"
 
-LOG_FILE = LOG_DIR / "app.log"
+def setup_logger(name: str) -> logging.Logger:
+    """
+    Создаёт логер с file_handler и форматтером.
+    """
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
-    filename=LOG_FILE,
-    filemode="w",
-    encoding="utf-8",
-)
+    if not logger.handlers:  # чтобы не добавлять несколько обработчиков
+        file_handler = logging.FileHandler(LOG_FILE, mode="w", encoding="utf-8")
+        formatter = logging.Formatter(
+            fmt="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S"
+        )
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
 
-
-def setup_logging() -> None:
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
-        filename=LOG_FILE,
-        filemode="w",
-        encoding="utf-8",
-    )
+    return logger
