@@ -19,6 +19,7 @@ HOMEWORKE9_2/\
 │   ├── external_api.py\
 │   ├── generators.py\
 │   ├── logger_config.py\
+│   ├── readers.py\
 │   ├── utils.py\
 │   ├── processing.py    # Обработка операций\
 │   └── widget.py        # Основная логика виджета\
@@ -31,6 +32,7 @@ HOMEWORKE9_2/\
 │   ├── test_external_api.py\
 │   ├── test_generators.py\
 │   ├── test_processing.py\
+│   ├── test_reders.py\
 │   ├── test_utils.py\
 │   └── test_widget.py\
 │\
@@ -39,7 +41,8 @@ HOMEWORKE9_2/\
 │\
 ├── pyproject.toml\
 ├── poetry.lock\
-└── README.md\
+├── README.md\
+└── requirements.txt\
 
 ## ⚙️ Установка и запуск
 ### 1️⃣ Клонирование репозитория
