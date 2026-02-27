@@ -6,12 +6,20 @@
 
 ## 🗂 Структура проекта
 HOMEWORKE9_2/\
+├── data/\
+│   ├── operations.json\
+│\
+├── logs/\
+│   ├── app.log\
+│\
 ├── src/\
 │   ├── masks.py          # Маскировка карт и счетов\
 │   ├── bank_operations.py\
 │   ├── decorators.py\
 │   ├── external_api.py\
 │   ├── generators.py\
+│   ├── logger_config.py\
+│   ├── utils.py\
 │   ├── processing.py    # Обработка операций\
 │   └── widget.py        # Основная логика виджета\
 │\
@@ -23,6 +31,7 @@ HOMEWORKE9_2/\
 │   ├── test_external_api.py\
 │   ├── test_generators.py\
 │   ├── test_processing.py\
+│   ├── test_utils.py\
 │   └── test_widget.py\
 │\
 ├── htmlcov/              # HTML-отчёт покрытия тестами\
