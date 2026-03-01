@@ -20,7 +20,7 @@ def read_transactions_from_csv(file_path: str) -> List[Dict[str, Any]]:
 def read_transactions_from_excel(file_path: str) -> List[Dict[str, Any]]:
     logger.info(f"Чтение Excel-файла: {file_path}")
     try:
-        df = pd.read_excel(file_path)
+        df = pd.read_excel(file_path, engine="openpyxl")
         transactions = cast(List[Dict[str, Any]], df.to_dict(orient="records"))
         return transactions
     except Exception as e:
